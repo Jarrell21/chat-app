@@ -5,9 +5,9 @@ import {
 } from '@chakra-ui/react';
 import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import LoginPage from './routes/LoginPage';
-import ChatPage from './routes/ChatPage';
-import ErrorPage from './routes/ErrorPage';
+import LoginPage from './pages/LoginPage';
+import ChatPage from './pages/ChatPage';
+import ErrorPage from './pages/ErrorPage';
 
 
 const router = createBrowserRouter([

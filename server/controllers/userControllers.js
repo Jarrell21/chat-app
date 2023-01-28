@@ -38,4 +38,28 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { registerUser };
+const authUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await User.findOne({ email });
+
+  if (user) {
+    if (await user.passwordMatches(password)) {
+      res.json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        pic: user.pic,
+        token: generateToken(user._id),
+      });
+    } else {
+      res.status(401);
+      throw new Error('Password incorrect');
+    }
+  } else {
+    res.status(401);
+    throw new Error('User does not exist');
+  }
+});
+
+module.exports = { registerUser, authUser };

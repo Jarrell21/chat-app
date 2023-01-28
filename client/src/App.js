@@ -5,7 +5,7 @@ import {
 } from '@chakra-ui/react';
 import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Homepage from './routes/Homepage';
+import LoginPage from './routes/LoginPage';
 import ChatPage from './routes/ChatPage';
 import ErrorPage from './routes/ErrorPage';
 
@@ -13,7 +13,7 @@ import ErrorPage from './routes/ErrorPage';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Homepage />,
+    element: <LoginPage />,
     errorElement: <ErrorPage />,
   },
   {

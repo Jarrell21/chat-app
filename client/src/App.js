@@ -7,7 +7,6 @@ import {
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      Hello
     </ChakraProvider>
   );
 }

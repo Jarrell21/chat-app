@@ -21,7 +21,7 @@ const Signup = () => {
   const [pic, setPic] = useState();
   const [loading, setLoading] = useState(false);
   const toast = useToast();
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const toggleHideShow = () => setShow(!show);
 
@@ -134,7 +134,7 @@ const Signup = () => {
       localStorage.setItem('userInfo', JSON.stringify(data));
 
       setLoading(false);
-      history.push('/chats');
+      navigate('/chats');
 
     } catch (error) {
       toast({

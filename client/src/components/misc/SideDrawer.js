@@ -85,39 +85,36 @@ const SideDrawer = () => {
   };
 
   const accessChat = async (userId) => {
+    console.log(userId);
+    
     try {
-      setLoading(true)
-
+      setLoadingChat(true);
       const config = {
         headers: {
-          "Content-type" : "application/json",
-          Authorization: `Bearer ${user.token}`
-        }
-      }
+          "Content-type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      };
+      const { data } = await axios.post(`/api/chat`, { userId }, config);
 
-      const {data} = await axios.post('/api/chat', { userId }, config);
-
-      if(!chats.find((chat) => chat._id === data._id)){
-        setChats([data, ...chats]);
-      }
-
+      if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
       setSelectedChat(data);
       setLoadingChat(false);
       onClose();
     } catch (error) {
       toast({
-        title: 'Error fetching the chat',
+        title: "Error fetching the chat",
         description: error.message,
-        status: 'error',
+        status: "error",
         duration: 5000,
         isClosable: true,
-        position: 'bottom-left'
-      })
+        position: "bottom-left",
+      });
     }
-  }
+  };
 
   return (
-    <div>
+    <>
       <Flex
         justify={'space-between'}
         align='center'
@@ -204,7 +201,7 @@ const SideDrawer = () => {
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
-    </div>
+    </>
   )
 }
 

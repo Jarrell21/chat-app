@@ -197,7 +197,7 @@ const SideDrawer = () => {
                 />
               ))
             )}
-            {loadingChat && <Flex><Spinner ml={'auto'}/></Flex>}
+            {loadingChat && <Spinner display={'flex'} ml={'auto'}/>}
           </DrawerBody>
 
           <DrawerFooter>

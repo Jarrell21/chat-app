@@ -20,7 +20,7 @@ const ProfileModal = ({user, children}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
-    <div>
+    <>
         {children ? (<span onClick={onOpen}>{children}</span>) : (
             <IconButton 
                 display={{base: 'flex'}}
@@ -72,7 +72,7 @@ const ProfileModal = ({user, children}) => {
 
         </ModalContent>
       </Modal>
-    </div>
+    </>
   )
 }
 

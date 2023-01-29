@@ -33,7 +33,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         },
     };
 
-    const { user, selectedChat, setSelectedChat } = ChatState();
+    const { user, selectedChat, setSelectedChat, notification, setNotification } = ChatState();
 
     const fetchMessages = async () => {
         if (!selectedChat) return;
@@ -86,7 +86,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       useEffect(() => {
         socket.on('message received', (newMessageReceived) => {
             if(!selectedChatCompare || selectedChatCompare._id !== newMessageReceived.chat._id){
-                //give notif
+                if (!notification.includes(newMessageReceived)) {
+                    setNotification([newMessageReceived, ...notification]);
+                    setFetchAgain(!fetchAgain);
+                  }
             } else {
                 setMessages([...messages, newMessageReceived]);
             }
